@@ -34,14 +34,14 @@ claude plugin install ./
 
 ### Analyzing Transcripts
 
-1. Download a video transcript using yt-dlp:
+1. Download a video transcript using the extraction script:
    ```bash
-   yt-dlp --write-info-json --skip-download "https://youtube.com/watch?v=VIDEO_ID"
+   python scripts/youtube_extract.py -u "https://youtube.com/watch?v=VIDEO_ID" -o transcripts/
    ```
 
 2. Run the analysis skill in Claude Code:
    ```
-   /retro-analyze-transcript ./VIDEO_ID.info.json
+   /retro-analyze-transcript ./transcripts/VIDEO_ID.json
    ```
 
 3. The skill will:

@@ -6,18 +6,23 @@ Thank you for your interest in contributing to the retrocomputing knowledge base
 
 - [Claude Code](https://claude.com/claude-code) installed
 - Git
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) for downloading transcripts
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) for video metadata extraction
+- [fabric](https://github.com/danielmiessler/fabric) for transcript extraction
 
-### Installing yt-dlp
+### Installing Dependencies
 
 ```bash
 # macOS
 brew install yt-dlp
+brew install fabric
 
-# pip
+# Or using pip/go
 pip install yt-dlp
+go install github.com/danielmiessler/fabric@latest
 
-# Other platforms: https://github.com/yt-dlp/yt-dlp#installation
+# Other platforms:
+# yt-dlp: https://github.com/yt-dlp/yt-dlp#installation
+# fabric: https://github.com/danielmiessler/fabric#installation
 ```
 
 ## Getting Started
@@ -32,17 +37,17 @@ claude plugin install ./
 
 ### 2. Download Transcripts
 
-Use yt-dlp to download video metadata and transcripts:
+Use the extraction script to download video metadata and transcripts:
 
 ```bash
-# Download transcript as JSON
-yt-dlp --write-info-json --skip-download "https://youtube.com/watch?v=VIDEO_ID"
+# Single video
+python scripts/youtube_extract.py -u "https://youtube.com/watch?v=VIDEO_ID" -o transcripts/
 
-# Move to transcripts folder (optional, for organization)
-mv VIDEO_ID.info.json transcripts/
+# Multiple videos from file
+python scripts/youtube_extract.py -f urls.txt -o transcripts/ -d 5
 ```
 
-The `.info.json` file contains:
+The `.json` file contains:
 - Video metadata (title, channel, date)
 - Full transcript text
 - Description (often contains links to tools/parts)
@@ -58,7 +63,7 @@ claude
 
 Then in Claude Code:
 ```
-/retro-analyze-transcript ./transcripts/VIDEO_ID.info.json
+/retro-analyze-transcript ./transcripts/VIDEO_ID.json
 ```
 
 The skill will:
