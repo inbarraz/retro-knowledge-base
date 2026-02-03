@@ -1,0 +1,14 @@
+{
+  "name": "retro-knowledge-base",
+  "owner": {
+    "name": "Inbar"
+  },
+  "plugins": [
+    {
+      "name": "retro-knowledge-base",
+      "source": "./",
+      "description": "Retrocomputing restoration knowledge base with YouTube transcript analysis",
+      "version": "1.0.0"
+    }
+  ]
+}

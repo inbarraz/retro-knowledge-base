@@ -1,0 +1,10 @@
+{
+  "name": "retro-knowledge-base",
+  "description": "Knowledge base for retrocomputing restoration with transcript analysis skill",
+  "version": "1.0.0",
+  "author": {
+    "name": "Inbar"
+  },
+  "repository": "https://github.com/inbarraz/retro-knowledge-base",
+  "license": "MIT"
+}
